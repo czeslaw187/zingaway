@@ -1,6 +1,9 @@
+'use client'
+
 import Link from "next/link";
 import NavBar from "../Components/NavBar";
 import { Rubik_Mono_One, Luckiest_Guy, Bangers } from "next/font/google";
+import { useSelector } from "react-redux";
 
 const grupo = Bangers({
     subsets:['latin'],
@@ -8,6 +11,9 @@ const grupo = Bangers({
 })
 
 export default function Main() {
+
+    const allData = useSelector(state=>state.front)
+    console.log(allData)
 
     return(
         <div className='relative'>

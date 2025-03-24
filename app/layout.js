@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from "next/legacy/image";
+import StoreProvider from "./StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} w-screen min-h-screen relative`}>
         <div><Image src='/Background9.jpg' alt='Background1' layout='fill' objectFit='cover' quality={100} /></div>
+        <StoreProvider>
         {children}
+        </StoreProvider>
       </body>
     </html>
   );
