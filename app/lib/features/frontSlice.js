@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
     products: [],
     cart: [],
+    activePage: '',
     error: ''
 }
 
@@ -19,11 +20,22 @@ export const frontSlice = createSlice({
         },
         setError: (state, action) => {
             state.error = action.payload
+        },
+        addToCart: (state, action) => {
+            state.cart = [...state.cart, action.payload]
+        },
+        removeFromCart: (state, action) => {
+            let arr = state.cart.filter((el)=>{return el.id !== action.payload})
+            state.cart = arr
+        },
+        setPage: (state, action) => {
+            state.activePage = action.payload
         }
+
     }
 })
 
-export const {getProducts, getCart, setError} = frontSlice.actions
+export const {getProducts, getCart, setError, addToCart, removeFromCart, setPage} = frontSlice.actions
 export default frontSlice.reducer
 
 export const fetchProducts =()=> async dispatch => {

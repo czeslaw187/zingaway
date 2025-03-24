@@ -12,9 +12,8 @@ export default function Front() {
 
     const dispatch = useDispatch()
     const prods = useSelector(state=>state.front)
-    const [selected,setSelected] = useState(null)
     const cats = [...new Set(prods.products.map(el=>el.category))]
-    const filtered = selected ? prods.products.filter((el)=>{return el.category === selected}) : []
+    const filtered = prods.activePage ? prods.products.filter((el)=>{return el.category === prods.activePage}) : []
 
     useEffect(()=>{
         dispatch(fetchProducts())
@@ -25,13 +24,14 @@ export default function Front() {
             dispatch(setError(''))
         }, 3000);
     })
+    console.log(prods.cart)
     return(
         <div className="min-h-screen relative">
-            <Image src='/Background13.jpg' alt='Background1' layout='fill' objectFit='cover' quality={100} />
+            <Image src='/Background11.jpg' alt='Background1' layout='fill' objectFit='cover' quality={100} />
             <NavBar />
             <div className="text-xl text-center font-bold relative">{prods.error}</div>
-            <CatNav cats={cats} setSelected={setSelected} />
-            <ul className="relative">
+            <CatNav cats={cats} />
+            <ul className="relative pl-0 grid grid-cols-5 justify-items-center">
                 {
                     filtered && filtered.map((el,id)=>{
                         return(
