@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
     products: [],
@@ -24,3 +25,11 @@ export const frontSlice = createSlice({
 
 export const {getProducts, getCart, setError} = frontSlice.actions
 export default frontSlice.reducer
+
+export const fetchProducts =()=> async dispatch => {
+    await axios.get(process.env.NEXT_PUBLIC_URL + '/api/fetchProducts').then((resp)=>{
+        console.log(resp.data,'actions')
+        dispatch(getProducts(resp.data.data))
+        dispatch(setError(resp.data.message))
+    })
+}
