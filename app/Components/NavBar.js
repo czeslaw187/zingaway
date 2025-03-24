@@ -25,11 +25,12 @@ export default function NavBar() {
     }
 
     return(
-        <div className="w-screen h-[4rem] flex justify-between place-content-baseline place-items-center px-2 relative">
+        <div className="w-screen h-[4rem] flex justify-between place-content-baseline place-items-center pl-2 pr-4 pt-2 relative">
             <Link href={'/Main'} className={`text-5xl font-bold text-amber-600 ${henpen.className}`}>Zingaway</Link>
-            <Button variant='outline-dark' onClick={()=>{handleOpen()}}>
+            <button className="w-[5rem] h-[4rem] border-3 border-black rounded-md transition duration-200 ease-out hover:text-white hover:bg-black" 
+                    onClick={()=>{handleOpen()}}>
                 <FontAwesomeIcon icon={faBars} size="2xl"/>
-            </Button>
+            </button>
             <Offcanvas show={show} onHide={()=>{handleClose()}} placement='end'>
                 <Offcanvas.Header className='bg-slate-600 text-white' closeButton>
                     <Offcanvas.Title>Menu</Offcanvas.Title>
