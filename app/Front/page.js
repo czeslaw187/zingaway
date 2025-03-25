@@ -24,10 +24,10 @@ export default function Front() {
             dispatch(setError(''))
         }, 3000);
     })
-    console.log(prods.cart)
+
     return(
         <div className="min-h-screen relative">
-            <Image src='/Background11.jpg' alt='Background1' layout='fill' objectFit='cover' quality={100} />
+            <Image src='/Background26.jpg' alt='Background1' layout='fill' objectFit='cover' quality={100} />
             <NavBar />
             <div className="text-xl text-center font-bold relative">{prods.error}</div>
             <CatNav cats={cats} />
